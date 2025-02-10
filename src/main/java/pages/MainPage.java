@@ -2,11 +2,13 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selenide.page;
 
 public class MainPage extends BasePage {
 
@@ -26,6 +28,22 @@ public class MainPage extends BasePage {
     @FindBy(how = How.XPATH, using = ".//span[text()='Начинки']")
     private SelenideElement sectionToppings;
 
+    //Локатор для определения выделенного раздела конструктора
+    @FindBy(how = How.XPATH, using = ".//div[@class='tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect']")
+    private SelenideElement selectedSection;
+
+    //Локатор для заголовка Булки под блоками с разделами
+    @FindBy(how = How.XPATH, using = ".//h2[text()='Булки']")
+    private SelenideElement headerBuns;
+
+    //Локатор для заголовка Соусы под блоками с разделами
+    @FindBy(how = How.XPATH, using = ".//h2[text()='Соусы']")
+    private SelenideElement headerSauces;
+
+    //Локатор для заголовка Начинки под блоками с разделами
+    @FindBy(how = How.XPATH, using = ".//h2[text()='Начинки']")
+    private SelenideElement headerToppings;
+
     //Локатор заголовка Соберите бургер
     @FindBy(how = How.XPATH, using = ".//h1[text()='Соберите бургер']")
     private SelenideElement headerConstructBurger;
@@ -35,22 +53,44 @@ public class MainPage extends BasePage {
     private SelenideElement buttonCreateOrder;
 
 
-
-
-    public MainPage(WebDriver driver) {
-        super(driver);
-    }
-
     @Step("Нажатие кнопки \"Войти в аккаунт\" на главной странице")
     public void clickEnterInAccountButton() {
         buttonEnterInAccount.click();
-        LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = page(LoginPage.class);
         loginPage.checkHeader();
     }
 
     @Step("Проверка, что после авторизации на кнопке отображается текст \"Оформить заказ\"")
     public void checkTextOnCreateOrderButton() {
         buttonCreateOrder.shouldBe(exactText("Оформить заказ"));
+    }
+
+    @Step("Выбор раздела Булки")
+    public void clickSectionBuns() {
+        sectionBuns.shouldBe(visible);
+        sectionBuns.click();
+        headerBuns.shouldBe(visible);
+    }
+
+    @Step("Выбор раздела Соусы")
+    public void clickSectionSauces() {
+        sectionSauces.shouldBe(visible);
+        sectionSauces.click();
+        headerSauces.shouldBe(visible);
+    }
+
+    @Step("Выбор раздела Начинки")
+    public void clickSectionToppings() {
+        sectionToppings.shouldBe(visible);
+        sectionToppings.click();
+        headerToppings.shouldBe(visible);
+    }
+
+    @Step("Получаем название выбранного раздела в конструкторе")
+    public String getNameSelectedSection() throws InterruptedException {
+        Thread.sleep(2000); // ждем две секунды, пока пройдет анимация смены раздела
+        selectedSection.shouldBe(visible);
+        return selectedSection.getText();
     }
 
 

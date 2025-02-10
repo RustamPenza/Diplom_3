@@ -16,11 +16,11 @@ public class LoginPage extends BasePage {
     private SelenideElement headerEnter;
 
     //Локатор для поля ввода Email
-    @FindBy(how = How.XPATH, using = ".//input[@type='text']")
+    @FindBy(how = How.XPATH, using = ".//fieldset[1]//input")
     private SelenideElement inputEmail;
 
     //Локатор для поля ввода Пароль
-    @FindBy(how = How.XPATH, using = ".//input[@type='password']")
+    @FindBy(how = How.XPATH, using = ".//fieldset[2]//input")
     private SelenideElement inputPassword;
 
     //Локатор для кнопки Войти
@@ -38,16 +38,12 @@ public class LoginPage extends BasePage {
 
 
 
-    public LoginPage(WebDriver driver) {
-        super(driver);
-    }
 
     @Step("Авторизация пользователя")
     public void loginUser(User user) {
-        inputEmail.clear();
-        inputEmail.sendKeys(user.getEmail());
-        inputPassword.clear();
-        inputPassword.sendKeys(user.getPassword());
+        checkHeader();
+        inputEmail.setValue(user.getEmail());
+        inputPassword.setValue(user.getPassword());
         buttonEnter.click();
     }
 
@@ -56,6 +52,7 @@ public class LoginPage extends BasePage {
         linkRegistration.click();
     }
 
+    @Step("Проверка, что отображается заголовок Вход на странице авторизации")
     public void checkHeader() {
         headerEnter.shouldBe(visible);
     }
