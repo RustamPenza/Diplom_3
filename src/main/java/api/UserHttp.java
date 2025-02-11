@@ -9,7 +9,7 @@ public class UserHttp extends BaseHttpClient {
     @Step("Создание пользователя")
     public Response createUser(User user) {
         Response response = doPostRequest(URL.CREATE_USER, user);
-        if(user.getAccessToken() == null) {
+        if (user.getAccessToken() == null) {
             user.setAccessToken(response.getBody().jsonPath().get("accessToken"));
         }
         return response;
@@ -23,7 +23,7 @@ public class UserHttp extends BaseHttpClient {
     }
 
     @Step("Удаление пользователя")
-    public Response deleteUser (User user) {
+    public Response deleteUser(User user) {
         return doDeleteRequest(URL.DELETE_USER, user.getAccessToken());
     }
 

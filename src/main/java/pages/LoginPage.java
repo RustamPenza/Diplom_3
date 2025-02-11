@@ -2,7 +2,6 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import pojo.User;
@@ -30,13 +29,6 @@ public class LoginPage extends BasePage {
     //Локатор для ссылки Зарегистрироваться
     @FindBy(how = How.XPATH, using = ".//a[text()='Зарегистрироваться']")
     private SelenideElement linkRegistration;
-
-    //Локатор для ссылки Восстановить пароль
-    @FindBy(how = How.XPATH, using = ".//a[text()='Восстановить пароль']")
-    private SelenideElement linkRecoveryPassword;
-
-
-
 
 
     @Step("Авторизация пользователя")

@@ -10,9 +10,6 @@ import pojo.User;
 
 public class RegistrationPage extends BasePage {
 
-    //Локатор для заголовка Регистрация
-    @FindBy(how = How.XPATH, using = ".//h2[text()='Регистрация']")
-    private SelenideElement headerRegistration;
 
     //Локатор для вода Имени
     @FindBy(how = How.XPATH, using = ".//fieldset[1]//input")

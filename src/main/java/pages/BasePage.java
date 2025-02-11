@@ -2,18 +2,17 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
 public class BasePage {
 
     // локатор поля кнопки Конструктор
-    @FindBy(how = How.XPATH,using = ".//p[text()='Конструктор']")
+    @FindBy(how = How.XPATH, using = ".//p[text()='Конструктор']")
     protected SelenideElement buttonConstructor;
 
     // локатор для кнопки Личный кабинет
-    @FindBy(how = How.XPATH,using = ".//p[text()='Личный Кабинет']")
+    @FindBy(how = How.XPATH, using = ".//p[text()='Личный Кабинет']")
     protected SelenideElement buttonPersonalAccount;
 
     // локатор для логотипа сайта

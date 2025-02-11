@@ -5,8 +5,6 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
-import java.time.Duration;
-
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.page;
 
@@ -44,9 +42,6 @@ public class MainPage extends BasePage {
     @FindBy(how = How.XPATH, using = ".//h2[text()='Начинки']")
     private SelenideElement headerToppings;
 
-    //Локатор заголовка Соберите бургер
-    @FindBy(how = How.XPATH, using = ".//h1[text()='Соберите бургер']")
-    private SelenideElement headerConstructBurger;
 
     //Локатор для кнопки Оформить заказ
     @FindBy(how = How.XPATH, using = ".//button[text()='Оформить заказ']")
