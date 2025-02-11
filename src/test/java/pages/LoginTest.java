@@ -2,7 +2,6 @@ package pages;
 
 import api.URL;
 import api.UserHttp;
-import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Before;
@@ -13,16 +12,15 @@ import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
-public class LoginTest {
+public class LoginTest extends BaseTest {
     private User user;
     private final UserHttp userHttp = new UserHttp();
+
 
     @Before
     public void setUp() throws Exception {
         user = new User("Iva324n", "fsasdfffff@mail.ru", "123456");
         userHttp.createUser(user);
-        var yandexBrowser = new YandexBrowser("src/main/resources/webdriver/yandexdriver.exe");
-        WebDriverRunner.setWebDriver(yandexBrowser);
     }
 
     @After

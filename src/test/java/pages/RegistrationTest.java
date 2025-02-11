@@ -3,7 +3,6 @@ package pages;
 import api.URL;
 import api.UserHttp;
 import io.qameta.allure.junit4.DisplayName;
-import io.restassured.response.Response;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,7 +11,7 @@ import pojo.User;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
-public class RegistrationTest {
+public class RegistrationTest extends BaseTest {
     private User user;
     private final UserHttp userHttp = new UserHttp();
 

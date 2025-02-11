@@ -12,7 +12,7 @@ import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
-public class PersonalAccountTest {
+public class PersonalAccountTest extends BaseTest {
     private User user;
     private final UserHttp userHttp = new UserHttp();
 

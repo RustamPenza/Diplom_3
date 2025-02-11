@@ -4,24 +4,13 @@ import api.URL;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.chrome.ChromeOptions;
 
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
-public class ConstructorTest {
+public class ConstructorTest extends BaseTest {
 
-//    @Before
-//    public void setUp() {
-//        System.setProperty("webdriver.chrome.driver", "src/main/resources/webdriver/yandexdriver.exe");
-//        ChromeOptions options = new ChromeOptions();
-//        /* Поэтому лучше передавать путь через переменную maven
-//         * mvn clean test -DyandexDriverPath=src/main/resources/webdriver/yandexdriver.exe
-//         * mvn clean test -DyandexDriverPath=C:\Users\User\AppData\Local\Yandex\YandexBrowser\Application\browser.exe*/
-//        options.setBinary(System.getProperty("yandexDriverPath"));
-//    }
 
     @After
     public void tearDown() throws Exception {
