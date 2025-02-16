@@ -24,7 +24,8 @@ public class ConstructorTest extends BaseTest {
         MainPage mainPage = open(URL.BASE_URL, MainPage.class); //открываем главную страницу
         mainPage.clickSectionSauces(); // Сначала выбираем раздел Соусы, что бы булки были скрыты
         mainPage.clickSectionBuns(); // Выбираем раздел Булки и проверяем, что в таблице появляется заголовок Булки
-        Assert.assertEquals("Булки", mainPage.getNameSelectedSection());//Проверяем название выбранного раздела
+        String expectedText = "Булки";
+        Assert.assertEquals(expectedText, mainPage.getNameSelectedSection(expectedText));//Проверяем название выбранного раздела
     }
 
     @Test
@@ -32,7 +33,8 @@ public class ConstructorTest extends BaseTest {
     public void selectSectionSauces() throws InterruptedException {
         MainPage mainPage = open(URL.BASE_URL, MainPage.class); //открываем главную страницу
         mainPage.clickSectionSauces(); // Выбираем раздел Соусы
-        Assert.assertEquals("Соусы", mainPage.getNameSelectedSection());  //Проверяем название выбранного раздела
+        String expectedText = "Соусы";
+        Assert.assertEquals(expectedText, mainPage.getNameSelectedSection(expectedText));  //Проверяем название выбранного раздела
     }
 
     @Test
@@ -40,7 +42,8 @@ public class ConstructorTest extends BaseTest {
     public void selectSectionToppings() throws InterruptedException {
         MainPage mainPage = open(URL.BASE_URL, MainPage.class); //открываем главную страницу
         mainPage.clickSectionToppings(); // Выбираем раздел Начинки
-        Assert.assertEquals("Начинки", mainPage.getNameSelectedSection()); //Проверяем название выбранного раздела
+        String expectedText = "Начинки";
+        Assert.assertEquals(expectedText, mainPage.getNameSelectedSection(expectedText)); //Проверяем название выбранного раздела
     }
 
 }

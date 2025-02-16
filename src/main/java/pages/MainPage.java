@@ -1,9 +1,12 @@
 package pages;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+
+import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.page;
@@ -82,9 +85,9 @@ public class MainPage extends BasePage {
     }
 
     @Step("Получаем название выбранного раздела в конструкторе")
-    public String getNameSelectedSection() throws InterruptedException {
-        Thread.sleep(2000); // ждем две секунды, пока пройдет анимация смены раздела
-        selectedSection.shouldBe(visible);
+    public String getNameSelectedSection(String text) throws InterruptedException {
+        // ждем две секунды, пока пройдет анимация смены раздела и текст в веб элементе будет соответствовать выбранному разделу
+        selectedSection.shouldBe(Condition.exactText(text), Duration.ofSeconds(2));
         return selectedSection.getText();
     }
 
