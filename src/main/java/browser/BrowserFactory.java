@@ -1,15 +1,16 @@
 package browser;
 
 public class BrowserFactory {
-    private String nameBrowser; //для ввода можно значения: yandex и chrome
 
-    public BrowserFactory(String nameBrowser) {
-        if (nameBrowser.equals("yandex")) {
-            System.out.println("Для выполнения тестов выбран Yandex browser");
-            System.setProperty("webdriver.chrome.driver", "src/main/resources/webdriver/yandexdriver.exe");
-        } else if (nameBrowser.equals("chrome")) {
-            System.out.println("Для выполнения тестов выбран Google Chrome browser");
+    private final String wayToDriver = "src/main/resources/webdriver/%sdriver.exe"; //путь до драйвера
+
+    public void setBrowser(String nameDriver) {
+        if (nameDriver.equals("yandex") || nameDriver.equals("chrome")) {
+            System.setProperty("webdriver.chrome.driver", String.format(wayToDriver, nameDriver));
+        } else {
+            System.out.println("Введите корректное имя драйвера: yandex или chrome");
         }
+
     }
 
 }
